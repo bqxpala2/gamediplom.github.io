@@ -1,0 +1,473 @@
+[gd_scene format=3 uid="uid://c6kkq4cpq6esf"]
+
+[ext_resource type="Script" uid="uid://uqsuwbcblldc" path="res://Main Screen/main_screen.gd" id="1_4u6rd"]
+[ext_resource type="Texture2D" uid="uid://ens7f42xdglg" path="res://Assets/Progress Bar/progress_bar_fill.png" id="2_7mu4d"]
+[ext_resource type="Texture2D" uid="uid://diy2ggq7o4bmy" path="res://Assets/Background/479a0737-4709-4230-9bca-9fd6f7cfa304.jpg" id="2_802sk"]
+[ext_resource type="Texture2D" uid="uid://bxf2tamrhv1qo" path="res://Assets/Icons/settings_icon.png" id="2_sgd11"]
+[ext_resource type="Texture2D" uid="uid://p4pxgwdiivv" path="res://Assets/Icons/calendar_icon.png" id="3_itkxq"]
+[ext_resource type="Texture2D" uid="uid://cusmk2dqn810i" path="res://Assets/Progress Bar/progress_bar_border.png" id="3_xb55d"]
+[ext_resource type="Texture2D" uid="uid://culbykw3q2xat" path="res://Assets/Icons/learn_button_icon.png" id="4_eqjvh"]
+[ext_resource type="Texture2D" uid="uid://bn7vjknvxe8qm" path="res://Assets/Icons/MonetaIcon.png" id="4_vjyax"]
+[ext_resource type="Texture2D" uid="uid://b5qwuxenuyhmg" path="res://Assets/Icons/sandwich_icon.png" id="4_xb55d"]
+[ext_resource type="Texture2D" uid="uid://ddo2sko1hb4u2" path="res://Assets/Icons/play_button_icon.png" id="5_6pika"]
+[ext_resource type="Texture2D" uid="uid://cvwbd4i44p1r1" path="res://Assets/Icons/learn_button_icon_pressed.png" id="5_ct7jd"]
+[ext_resource type="Texture2D" uid="uid://dcdyughivjjm3" path="res://Assets/Icons/mood_icon.png" id="5_gxf5b"]
+[ext_resource type="Texture2D" uid="uid://ckjxs27bh7kn6" path="res://Assets/Icons/hat_icon.png" id="6_kv67s"]
+[ext_resource type="Texture2D" uid="uid://dbpcj8by3ndpo" path="res://Assets/Icons/my_briefcase_button_icon.png" id="6_li0c1"]
+[ext_resource type="Texture2D" uid="uid://sjq86dpvfxnu" path="res://Assets/Icons/shop_button_icon.png" id="7_5vb3u"]
+[ext_resource type="Texture2D" uid="uid://bpnbcsp2xboll" path="res://Assets/Icons/play_button_icon_pressed.png" id="7_vjyax"]
+[ext_resource type="Texture2D" uid="uid://c3ubgw1dd0amo" path="res://Assets/Icons/shop_button_icon_pressed.png" id="8_li0c1"]
+[ext_resource type="Texture2D" uid="uid://b2d0hkad87nhr" path="res://Assets/Icons/my_briefcase_button_icon_pressed.png" id="9_6wdn8"]
+[ext_resource type="PackedScene" uid="uid://bsbieqmixnpbq" path="res://Red Panda/red_panda.tscn" id="13_6wdn8"]
+[ext_resource type="AudioStream" uid="uid://drwhtm41nkf2x" path="res://Assets/Sounds/Music/cute pack 2.wav" id="20_4kf7e"]
+[ext_resource type="AudioStream" uid="uid://4oba8vwjld7r" path="res://Assets/Sounds/sfx/Abstract1.mp3" id="21_802sk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxf5b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gxf5b"]
+texture = ExtResource("4_xb55d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kv67s"]
+texture = ExtResource("5_gxf5b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4u6rd"]
+texture = ExtResource("6_kv67s")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4u6rd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_itkxq"]
+line_spacing = -3.0
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjyax"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wdn8"]
+texture = ExtResource("4_vjyax")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxnhg"]
+line_spacing = -3.0
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_84peq"]
+line_spacing = -3.0
+font_color = Color(0.14509805, 0.22745098, 0.29803923, 1)
+
+[node name="MainScreen" type="Control" unique_id=2067540592]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4u6rd")
+
+[node name="BackGroundImage" type="TextureRect" parent="." unique_id=1613247119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2778435, 1.3785836)
+texture = ExtResource("2_802sk")
+expand_mode = 2
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1352113373]
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface" unique_id=144654447]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 40
+
+[node name="Bars" type="VBoxContainer" parent="Interface/MarginContainer" unique_id=1523203582]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="Interface/MarginContainer/Bars" unique_id=780097539]
+custom_minimum_size = Vector2(0, 370)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gxf5b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/MarginContainer/Bars" unique_id=1866695419]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="FullnessText" type="Label" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=1332693597]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "СЫТОСТЬ"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=1929394722]
+layout_mode = 2
+alignment = 1
+
+[node name="FullnessProgressBar" type="TextureProgressBar" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer" unique_id=85930166]
+custom_minimum_size = Vector2(269, 16)
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_7mu4d")
+texture_over = ExtResource("3_xb55d")
+texture_progress = ExtResource("2_7mu4d")
+tint_under = Color(0.23412845, 0.3387321, 0.23264638, 1)
+tint_progress = Color(5.5350365e-06, 0.82555395, 0.19056645, 1)
+
+[node name="Panel" type="Panel" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer" unique_id=809029276]
+custom_minimum_size = Vector2(17, 13)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_gxf5b")
+
+[node name="MoodText" type="Label" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=1702309729]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "НАСТРОЕНИЕ"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=1864455252]
+layout_mode = 2
+alignment = 1
+
+[node name="MoodProgressBar" type="TextureProgressBar" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer2" unique_id=524281964]
+custom_minimum_size = Vector2(269, 16)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_7mu4d")
+texture_over = ExtResource("3_xb55d")
+texture_progress = ExtResource("2_7mu4d")
+tint_under = Color(0.4844284, 0.37126568, 0.36069766, 1)
+tint_progress = Color(1, 0.33187678, 0.30007407, 1)
+
+[node name="Panel" type="Panel" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer2" unique_id=1563923806]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kv67s")
+
+[node name="FinancialText" type="Label" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=1258751401]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "УРОВЕНЬ ФИНАНСОВОЙ ГРАМОТНОСТИ"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Interface/MarginContainer/Bars/VBoxContainer" unique_id=2124978492]
+layout_mode = 2
+alignment = 1
+
+[node name="FinancialProgressBar" type="TextureProgressBar" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer3" unique_id=88949259]
+custom_minimum_size = Vector2(269, 16)
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_7mu4d")
+texture_over = ExtResource("3_xb55d")
+texture_progress = ExtResource("2_7mu4d")
+tint_under = Color(0.61397296, 0.6065359, 0.55975705, 1)
+tint_progress = Color(0.94881374, 0.61998403, 0.0755619, 1)
+
+[node name="Panel" type="Panel" parent="Interface/MarginContainer/Bars/VBoxContainer/HBoxContainer3" unique_id=1546657020]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4u6rd")
+
+[node name="Panel2" type="Panel" parent="Interface/MarginContainer/Bars" unique_id=1552646936]
+custom_minimum_size = Vector2(330, 88)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4u6rd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/MarginContainer" unique_id=1605770706]
+layout_mode = 2
+theme_override_constants/separation = 350
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/MarginContainer/VBoxContainer" unique_id=680153870]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="SettingButton" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2131004202]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("2_sgd11")
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/SettingButton" unique_id=1223647148]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = -15
+
+[node name="SettingsText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/SettingButton/MarginContainer" unique_id=2095117857]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+text = "Настройки"
+
+[node name="DailyBonusButton" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer" unique_id=500574497]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("3_itkxq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/DailyBonusButton" unique_id=1313079571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = -26
+
+[node name="DailyBonusText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/DailyBonusButton/MarginContainer" unique_id=602161379]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+text = "Ежедневный бонус"
+label_settings = SubResource("LabelSettings_itkxq")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1634916116]
+custom_minimum_size = Vector2(37, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vjyax")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer" unique_id=540159428]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CreditsIcon" type="Panel" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=807963470]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_6wdn8")
+
+[node name="MoneyLabel" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=526686199]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "Финансы 500000"
+label_settings = SubResource("LabelSettings_rxnhg")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Interface/MarginContainer/VBoxContainer" unique_id=1781928740]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 11
+
+[node name="LearnButton" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=139216156]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_eqjvh")
+texture_pressed = ExtResource("5_ct7jd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/LearnButton" unique_id=951447351]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="LearnText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/LearnButton/MarginContainer" unique_id=184826186]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.14509805, 0.22745098, 0.29803923, 1)
+text = "Изучить"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1621112816]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("5_6pika")
+texture_pressed = ExtResource("7_vjyax")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/PlayButton" unique_id=802694409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="PlayText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/PlayButton/MarginContainer" unique_id=860727496]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.14509805, 0.22745098, 0.29803923, 1)
+text = "Поиграть"
+horizontal_alignment = 1
+
+[node name="MyBriefcase" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1327518232]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_li0c1")
+texture_pressed = ExtResource("9_6wdn8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/MyBriefcase" unique_id=723924509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="BriefcaseText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/MyBriefcase/MarginContainer" unique_id=81539030]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.14509805, 0.22745098, 0.29803923, 1)
+text = "Мой портфель"
+label_settings = SubResource("LabelSettings_84peq")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ShopButton" type="TextureButton" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1861286292]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("7_5vb3u")
+texture_pressed = ExtResource("8_li0c1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/ShopButton" unique_id=830728519]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="ShopText" type="Label" parent="Interface/MarginContainer/VBoxContainer/HBoxContainer2/ShopButton/MarginContainer" unique_id=1851824829]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.14509805, 0.22745098, 0.29803923, 1)
+text = "Магазин"
+horizontal_alignment = 1
+
+[node name="TapButton" type="Button" parent="Interface" unique_id=1920044082]
+offset_left = -804.0
+offset_top = 69.0
+offset_right = 1619.0
+offset_bottom = 381.0
+mouse_filter = 1
+text = "
+"
+flat = true
+
+[node name="Menu" type="Control" parent="Interface" unique_id=1759898468]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1748808831]
+stream = ExtResource("20_4kf7e")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="." unique_id=360743946]
+stream = ExtResource("21_802sk")
+bus = &"SFX"
+
+[node name="RedPanda" parent="." unique_id=700516496 instance=ExtResource("13_6wdn8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48900002
+anchor_top = 0.48900002
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.040009
+offset_top = -28.960022
+offset_right = -16.444458
+offset_bottom = -29.555542
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.5, 4.5)
+
+[node name="ClickHintLabel" type="Label" parent="." unique_id=526486042]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_top = 105.0
+offset_right = 64.5
+offset_bottom = 146.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 43
+text = "КЛИКАЙ!!"
+
+[node name="CoinParticles" type="CPUParticles2D" parent="." unique_id=1476731056]
+emitting = false
+amount = 15
+texture = ExtResource("4_vjyax")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 800)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.5
+
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer/DailyBonusButton" to="." method="_on_daily_bonus_button_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer2/LearnButton" to="." method="_on_learn_button_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer2/MyBriefcase" to="." method="_on_my_briefcase_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/VBoxContainer/HBoxContainer2/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="child_exiting_tree" from="Interface/Menu" to="." method="_on_menu_child_exiting_tree"]

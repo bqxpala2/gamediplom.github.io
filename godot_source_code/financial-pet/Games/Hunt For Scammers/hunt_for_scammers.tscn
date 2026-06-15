@@ -1,0 +1,352 @@
+[gd_scene load_steps=31 format=3 uid="uid://32pdlysqpy2q"]
+
+[ext_resource type="Texture2D" uid="uid://r3idnmh1t0eq" path="res://Assets/Background/hunt_bg_.png" id="1_olkfb"]
+[ext_resource type="Script" uid="uid://b5ukm43m5mb33" path="res://Games/Hunt For Scammers/hunt_for_scammers.gd" id="1_p2pb2"]
+[ext_resource type="Texture2D" uid="uid://dgt4x8ge5wc00" path="res://Assets/Icons/GPB_TEX_logo_2.png" id="2_5x1hb"]
+[ext_resource type="Texture2D" uid="uid://bnjgy7q28fhgv" path="res://Assets/UI/scammer_hunt_box.png" id="3_dmo3t"]
+[ext_resource type="Texture2D" uid="uid://doywnqu4xo2pc" path="res://Assets/Icons/clock_icon.png" id="7_8n250"]
+[ext_resource type="PackedScene" uid="uid://bsbieqmixnpbq" path="res://Red Panda/red_panda.tscn" id="7_mrhak"]
+[ext_resource type="Texture2D" uid="uid://h68trjkjyv71" path="res://Assets/UI/red_button.png" id="7_p1cs7"]
+[ext_resource type="Texture2D" uid="uid://dx17wrvmlm2w4" path="res://Assets/UI/dialog_box.png" id="7_qysy0"]
+[ext_resource type="Texture2D" uid="uid://cafono8jdj8ak" path="res://Assets/UI/red_button_pressed.png" id="8_8n250"]
+[ext_resource type="Texture2D" uid="uid://c0c13dyj157uh" path="res://Assets/UI/scammers_hunt_finish_box.png" id="10_uq0ua"]
+[ext_resource type="Texture2D" uid="uid://dh3wru1i5rs12" path="res://Assets/UI/green_button.png" id="11_00nty"]
+[ext_resource type="Texture2D" uid="uid://pa7sidb4stex" path="res://Assets/UI/green_button_pressed.png" id="12_q237r"]
+[ext_resource type="Texture2D" uid="uid://0ofi36fi60tr" path="res://Assets/UI/green_button_disabled.png" id="13_2bffm"]
+[ext_resource type="AudioStream" uid="uid://bdv2opycoyijc" path="res://Assets/Sounds/Music/cute pack 3.wav" id="14_00nty"]
+[ext_resource type="AudioStream" uid="uid://4oba8vwjld7r" path="res://Assets/Sounds/sfx/Abstract1.mp3" id="15_q237r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5x1hb"]
+texture = ExtResource("2_5x1hb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4vsk"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2pb2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mrhak"]
+texture = ExtResource("3_dmo3t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1cs7"]
+texture = ExtResource("7_qysy0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrhak"]
+line_spacing = -3.0
+font_color = Color(0, 0.2509804, 0.62352943, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qysy0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uq0ua"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_00nty"]
+texture = ExtResource("7_8n250")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63rx3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1cs7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtxkl"]
+texture = ExtResource("10_uq0ua")
+
+[sub_resource type="LabelSettings" id="LabelSettings_s085u"]
+line_spacing = -3.0
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_s28fp"]
+line_spacing = -5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_u32km"]
+line_spacing = -4.0
+
+[node name="HuntForScammers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p2pb2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_olkfb")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5x1hb")
+
+[node name="GPB" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(202, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.2509804, 0.62352943, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_o4vsk")
+text = "ГАЗПРОМБАНК"
+horizontal_alignment = 2
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p2pb2")
+
+[node name="ScammerHuntBox" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_mrhak")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScammerHuntBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ОХОТА НА МОШЕННИКОВ"
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p2pb2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(95, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_p1cs7")
+
+[node name="PandaText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/PanelContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Давайте поймаем
+мошенников!"
+label_settings = SubResource("LabelSettings_mrhak")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qysy0")
+
+[node name="RedPanda" parent="MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("7_mrhak")]
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uq0ua")
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_00nty")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_63rx3")
+
+[node name="QuitButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("7_p1cs7")
+texture_pressed = ExtResource("8_8n250")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -5.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ВЫЙТИ"
+horizontal_alignment = 1
+
+[node name="TimeLeftText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "0:30"
+
+[node name="Panel4" type="Panel" parent="MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p1cs7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="ScammerHuntFinishedPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -125.0
+offset_right = 101.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gtxkl")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScammerHuntFinishedPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 23
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 23
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScammerHuntFinishedPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="TimeIsUpText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "ВРЕМЯ ВЫШЛО!"
+
+[node name="ScammersCaughtText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "МОШЕННИКОВ
+ПОЙМАНО:
+7"
+label_settings = SubResource("LabelSettings_s085u")
+horizontal_alignment = 1
+
+[node name="MoneyEarnedText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Получено финансов: 100"
+horizontal_alignment = 1
+
+[node name="MoneyMinusedText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(155, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Отнято финансов за неправильные ответы: 25"
+label_settings = SubResource("LabelSettings_s28fp")
+autowrap_mode = 2
+
+[node name="FinalMoneyText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(155, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Итоговое кол-во финансов: 75"
+label_settings = SubResource("LabelSettings_u32km")
+autowrap_mode = 2
+
+[node name="LeaveButton" type="TextureButton" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture_normal = ExtResource("11_00nty")
+texture_pressed = ExtResource("12_q237r")
+texture_disabled = ExtResource("13_2bffm")
+
+[node name="LeaveText" type="Label" parent="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer/LeaveButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ВЫЙТИ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_00nty")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_q237r")
+bus = &"SFX"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer4/PanelContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="ScammerHuntFinishedPanel/MarginContainer/VBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]

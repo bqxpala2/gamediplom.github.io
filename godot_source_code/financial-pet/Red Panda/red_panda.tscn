@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bsbieqmixnpbq"]
+
+[ext_resource type="Script" uid="uid://dwlxo8gcttir3" path="res://Red Panda/red_panda.gd" id="1_a5d7j"]
+[ext_resource type="Texture2D" uid="uid://cp5crugbra88r" path="res://Assets/Red Panda/red_panda_main_character_shadow.png" id="1_s8yvg"]
+[ext_resource type="Texture2D" uid="uid://b20oogj5772cy" path="res://Assets/Red Panda/Kosmo1.png" id="2_0mm5e"]
+[ext_resource type="Texture2D" uid="uid://b881yur81rxvp" path="res://Assets/Red Panda/kosmo2.png" id="3_a5d7j"]
+[ext_resource type="Texture2D" uid="uid://xjp6jwmald4i" path="res://Assets/Red Panda/roket1.png" id="4_fcyra"]
+[ext_resource type="Texture2D" uid="uid://4wnvrb6ddtpo" path="res://Assets/Red Panda/roket2 (1).png" id="5_elfj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6to2o"]
+atlas = ExtResource("1_s8yvg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dep07"]
+atlas = ExtResource("1_s8yvg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isclo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6to2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dep07")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0mm5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a5d7j")
+}],
+"loop": true,
+"name": &"kosmo",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fcyra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_elfj5")
+}],
+"loop": true,
+"name": &"rocket",
+"speed": 2.0
+}]
+
+[node name="RedPanda" type="Control" unique_id=700516496]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a5d7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574627627]
+sprite_frames = SubResource("SpriteFrames_isclo")
+animation = &"kosmo"
+autoplay = "Idle"

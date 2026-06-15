@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://68ri5nxjffq2"]
+
+[ext_resource type="Texture2D" uid="uid://dn4qn64ux40kp" path="res://Assets/UI/box_64x16.png" id="1_oli33"]
+[ext_resource type="Texture2D" uid="uid://ca20lfjexdbel" path="res://Assets/UI/bank_deposit_button.png" id="2_fdjft"]
+[ext_resource type="Script" uid="uid://rvbxjveaopyb" path="res://Button Menu/My Briefcase Menu/Try Container/try_container.gd" id="2_sb4a6"]
+[ext_resource type="Texture2D" uid="uid://dh3wru1i5rs12" path="res://Assets/UI/green_button.png" id="3_sb4a6"]
+[ext_resource type="Texture2D" uid="uid://pa7sidb4stex" path="res://Assets/UI/green_button_pressed.png" id="4_r5jmb"]
+[ext_resource type="Texture2D" uid="uid://0ofi36fi60tr" path="res://Assets/UI/green_button_disabled.png" id="5_yg450"]
+[ext_resource type="AudioStream" uid="uid://4oba8vwjld7r" path="res://Assets/Sounds/sfx/Abstract1.mp3" id="7_sb4a6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s88qq"]
+texture = ExtResource("1_oli33")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6sj5i"]
+texture = ExtResource("2_fdjft")
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5whn"]
+line_spacing = -2.0
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(316, 48)
+theme_override_styles/panel = SubResource("StyleBoxTexture_s88qq")
+script = ExtResource("2_sb4a6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProductIcon" type="Panel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_6sj5i")
+
+[node name="ProductName" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(174, 0)
+layout_mode = 2
+text = "Кредитная карта с льготным периодом до 120 дней"
+label_settings = SubResource("LabelSettings_t5whn")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TryButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("3_sb4a6")
+texture_pressed = ExtResource("4_r5jmb")
+texture_disabled = ExtResource("5_yg450")
+
+[node name="ButtonText" type="Label" parent="VBoxContainer/HBoxContainer/TryButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Попробовать"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_sb4a6")
+bus = &"SFX"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TryButton" to="." method="_on_try_button_pressed"]

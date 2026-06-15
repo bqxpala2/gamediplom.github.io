@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://0p01vb5a364v"]
+
+[ext_resource type="Texture2D" uid="uid://co6cledg4vqth" path="res://Assets/UI/scammer_card.png" id="1_0srle"]
+[ext_resource type="Script" uid="uid://cvel4ghbteui" path="res://Games/Hunt For Scammers/Scammer Card/scammer_card.gd" id="2_4veeh"]
+[ext_resource type="Texture2D" uid="uid://b3o4mx5aqobx6" path="res://Assets/Persons/person_1.png" id="2_5nup1"]
+[ext_resource type="Texture2D" uid="uid://dx17wrvmlm2w4" path="res://Assets/UI/dialog_box.png" id="2_n3y4d"]
+[ext_resource type="Texture2D" uid="uid://dh3wru1i5rs12" path="res://Assets/UI/green_button.png" id="4_2cy7m"]
+[ext_resource type="Texture2D" uid="uid://pa7sidb4stex" path="res://Assets/UI/green_button_pressed.png" id="5_4veeh"]
+[ext_resource type="Texture2D" uid="uid://0ofi36fi60tr" path="res://Assets/UI/green_button_disabled.png" id="6_8aaet"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmo3t"]
+texture = ExtResource("1_0srle")
+modulate_color = Color(1, 0.27881354, 0.02321481, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1rane"]
+texture = ExtResource("2_n3y4d")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ey8w0"]
+line_spacing = -4.0
+font_color = Color(0, 0.2509804, 0.62352943, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3y4d"]
+texture = ExtResource("2_5nup1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evo6q"]
+
+[node name="ScammerCard" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 200)
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dmo3t")
+script = ExtResource("2_4veeh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -7
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1rane")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="DText" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 68)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0.2509804, 0.62352943, 1)
+text = "Ваш счёт под угрозой, срочно переведите деньги на “безопасный” счёт. Ваш счёт под угрозой, срочно переведите деньги на "
+label_settings = SubResource("LabelSettings_ey8w0")
+autowrap_mode = 2
+
+[node name="PersonPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_n3y4d")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_evo6q")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_2cy7m")
+texture_pressed = ExtResource("5_4veeh")
+texture_disabled = ExtResource("6_8aaet")
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ВЫБРАТЬ"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

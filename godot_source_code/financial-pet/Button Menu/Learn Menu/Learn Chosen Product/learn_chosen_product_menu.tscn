@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://dp2e6e3h7rlo1"]
+
+[ext_resource type="Texture2D" uid="uid://brfuc2e1c42qs" path="res://Assets/UI/64x64_panel_2.png" id="1_glt05"]
+[ext_resource type="Script" uid="uid://cjhbho5c2seq2" path="res://Button Menu/Learn Menu/Learn Chosen Product/learn_chosen_product_menu.gd" id="1_km007"]
+[ext_resource type="Texture2D" uid="uid://ca20lfjexdbel" path="res://Assets/UI/bank_deposit_button.png" id="2_km007"]
+[ext_resource type="Texture2D" uid="uid://h68trjkjyv71" path="res://Assets/UI/red_button.png" id="4_km007"]
+[ext_resource type="Texture2D" uid="uid://cafono8jdj8ak" path="res://Assets/UI/red_button_pressed.png" id="5_av275"]
+[ext_resource type="Texture2D" uid="uid://c8buim2a5q7s5" path="res://Assets/UI/red_button_disabled.png" id="6_aap2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7d0d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2usi"]
+texture = ExtResource("1_glt05")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdbth"]
+texture = ExtResource("2_km007")
+
+[sub_resource type="LabelSettings" id="LabelSettings_km007"]
+line_spacing = -10.0
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av275"]
+bg_color = Color(0.52156866, 0.70980394, 0.7411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glt05"]
+
+[sub_resource type="Theme" id="Theme_km007"]
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_glt05")
+
+[sub_resource type="LabelSettings" id="LabelSettings_av275"]
+line_spacing = -2.0
+
+[node name="LearnChosenProductMenu" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -317.0
+offset_right = 180.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c7d0d")
+script = ExtResource("1_km007")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 230
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(304, 304)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_r2usi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ИЗУЧИТЬ ПРОДУКТ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProductIcon" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qdbth")
+
+[node name="ProductName" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Кредитная карта с льготным периодом до 120 дней"
+label_settings = SubResource("LabelSettings_km007")
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_av275")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme = SubResource("Theme_km007")
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Description" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+text = "Для красной панды нет ничего важнее, чем надежная копилка! Вклад «Копить» — это ее любимый способ превратить твои деньги в стабильный источник пассивного дохода. Принцип прост: ты выбираешь срок (от 1 месяца до 3 лет), а панда своими лапками бережно сохраняет твою сумму, чтобы она росла с заранее известной ставкой.
+Хитрость для максимальной прибыли: открой вклад онлайн через приложение банка, и твоя панда получит супер-силу — надбавку +1% к ставке! А если ты новый или зарплатный клиент, жди дополнительный бонус.
+
+Что важно знать твоей панде:
+•	Это надежная, но строгая копилка: пополнять или снимать деньги досрочно нельзя.
+•	Если очень нужно, забрать деньги можно, но проценты будут символическими.
+•	Проценты можно получать каждый месяц или одной суммой в конце.
+"
+label_settings = SubResource("LabelSettings_av275")
+autowrap_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+texture_normal = ExtResource("4_km007")
+texture_pressed = ExtResource("5_av275")
+texture_disabled = ExtResource("6_aap2r")
+
+[node name="LearnText" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Закрыть"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

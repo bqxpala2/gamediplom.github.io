@@ -1,0 +1,368 @@
+[gd_scene format=3 uid="uid://dc3va80iim8ub"]
+
+[ext_resource type="Texture2D" uid="uid://brfuc2e1c42qs" path="res://Assets/UI/64x64_panel_2.png" id="1_beyg8"]
+[ext_resource type="Texture2D" uid="uid://ca20lfjexdbel" path="res://Assets/UI/bank_deposit_button.png" id="2_q5hcd"]
+[ext_resource type="Texture2D" uid="uid://dh3wru1i5rs12" path="res://Assets/UI/green_button.png" id="2_r2usi"]
+[ext_resource type="Texture2D" uid="uid://ddxiuq4xbwx14" path="res://Assets/UI/bank_deposit_button_presser.png" id="3_0rcli"]
+[ext_resource type="Texture2D" uid="uid://pa7sidb4stex" path="res://Assets/UI/green_button_pressed.png" id="3_yog4t"]
+[ext_resource type="Texture2D" uid="uid://bl3rl43s5ecu0" path="res://Assets/UI/life_insurance_button.png" id="4_3233y"]
+[ext_resource type="Texture2D" uid="uid://0ofi36fi60tr" path="res://Assets/UI/green_button_disabled.png" id="4_q5hcd"]
+[ext_resource type="Texture2D" uid="uid://q2j5mfd8vh7c" path="res://Assets/UI/life_insurance_button_pressed.png" id="5_bl7lf"]
+[ext_resource type="Texture2D" uid="uid://1ejcl14wat7i" path="res://Assets/UI/credit_card_button.png" id="6_jhlon"]
+[ext_resource type="Texture2D" uid="uid://7al4ua16jk6a" path="res://Assets/UI/it_mortgage_button.png" id="7_0rcli"]
+[ext_resource type="Texture2D" uid="uid://xkbb5bhcefv5" path="res://Assets/UI/credit_card_button_pressed.png" id="7_a33xk"]
+[ext_resource type="Texture2D" uid="uid://b5psooa6mvia" path="res://Assets/UI/it_mortgage_button_pressed.png" id="9_74yie"]
+[ext_resource type="Texture2D" uid="uid://h68trjkjyv71" path="res://Assets/UI/red_button.png" id="13_7klsf"]
+[ext_resource type="Texture2D" uid="uid://cafono8jdj8ak" path="res://Assets/UI/red_button_pressed.png" id="14_gouqy"]
+[ext_resource type="Texture2D" uid="uid://c8buim2a5q7s5" path="res://Assets/UI/red_button_disabled.png" id="15_efh1l"]
+[ext_resource type="AudioStream" uid="uid://4oba8vwjld7r" path="res://Assets/Sounds/sfx/Abstract1.mp3" id="16_gouqy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7d0d"]
+
+[sub_resource type="GDScript" id="GDScript_jhlon"]
+script/source = "extends PanelContainer
+
+signal change_financial_literacy_value(added_value: int, add_money: int)
+signal add_fullness_value(added_value: int)
+
+var chosen_product: String
+
+@onready var buttons_sound: AudioStreamPlayer = $ButtonsSound
+
+func _on_bank_deposit_button_pressed() -> void:
+	chosen_product = \"bank_deposit\"
+	$MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton.disabled = false
+	buttons_sound.play()
+
+func _on_life_insurance_button_pressed() -> void:
+	chosen_product = \"life_insurance\"
+	$MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton.disabled = false
+	buttons_sound.play()
+
+func _on_credit_card_button_pressed() -> void:
+	chosen_product = \"credit_card\"
+	$MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton.disabled = false
+	buttons_sound.play()
+
+func _on_it_mortgage_button_pressed() -> void:
+	chosen_product = \"it_mortgage\"
+	$MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton.disabled = false
+	buttons_sound.play()
+
+func _on_learn_button_pressed() -> void:
+	if chosen_product == \"bank_deposit\":
+		generate_chosen_product_menu(\"res://Assets/Texts/bank_deposit.txt\", \"res://Assets/UI/bank_deposit_button.png\", \"Вклад «Копить»\")
+	elif chosen_product == \"life_insurance\":
+		generate_chosen_product_menu(\"res://Assets/Texts/life_insurance.txt\", \"res://Assets/UI/life_insurance_button.png\", \"Инвестиционное Страхование Жизни\")
+	elif chosen_product == \"credit_card\":
+		generate_chosen_product_menu(\"res://Assets/Texts/credit_card.txt\", \"res://Assets/UI/credit_card_button.png\", \"Кредитная карта c льготным периодом до 120 дней\")
+	elif chosen_product == \"it_mortgage\":
+		generate_chosen_product_menu(\"res://Assets/Texts/it_mortgage.txt\", \"res://Assets/UI/it_mortgage_button.png\", \"Ипотека для IT-Специалистов\")
+	add_learned_product(chosen_product)
+	queue_free()
+
+
+func generate_chosen_product_menu(text_path: String, texture_path: String, product_name: String) -> void:
+	var file = FileAccess.open(text_path, FileAccess.READ)
+	var chosen_product_obj = preload(\"res://Button Menu/Learn Menu/Learn Chosen Product/learn_chosen_product_menu.tscn\")
+	var chosen_product_instance = chosen_product_obj.instantiate()
+	chosen_product_instance.description_text = file.get_as_text()
+	chosen_product_instance.product_name_text = product_name
+	chosen_product_instance.icon = load(texture_path)
+	get_parent().add_child(chosen_product_instance)
+
+func add_learned_product(learned_product: String) -> void:
+	var array: Array[String] = Globals.learned_products
+	if learned_product not in array:
+		array.append(learned_product)
+		Globals.financial_literacy += 5
+		change_financial_literacy_value.emit(5, 50)
+		add_fullness_value.emit(20)
+
+
+func _on_close_button_pressed() -> void:
+	queue_free()
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2usi"]
+texture = ExtResource("1_beyg8")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7klsf"]
+bg_color = Color(0.104863025, 0.245817, 0.31002852, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhlon"]
+
+[sub_resource type="Theme" id="Theme_w2du2"]
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_jhlon")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrkdu"]
+line_spacing = -3.0
+
+[node name="LearnProductMenu" type="PanelContainer" unique_id=195928708]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -317.0
+offset_right = 180.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c7d0d")
+script = SubResource("GDScript_jhlon")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=923945696]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 230
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1618205695]
+custom_minimum_size = Vector2(304, 400)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_r2usi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1918467625]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=186802672]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ИЗУЧИТЬ ПРОДУКТ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1988381125]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7klsf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=489778614]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+theme = SubResource("Theme_w2du2")
+horizontal_scroll_mode = 0
+scroll_deadzone = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer" unique_id=864778660]
+custom_minimum_size = Vector2(310, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer" unique_id=1332876999]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=2124833904]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BankDepositButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2096696420]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_mode = 1
+texture_normal = ExtResource("2_q5hcd")
+texture_pressed = ExtResource("3_0rcli")
+texture_focused = ExtResource("3_0rcli")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/BankDepositButton" unique_id=792502342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/BankDepositButton/MarginContainer" unique_id=488322886]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Вклад «Копить»"
+label_settings = SubResource("LabelSettings_jrkdu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LifeInsuranceButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=136207341]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 1
+texture_normal = ExtResource("4_3233y")
+texture_pressed = ExtResource("5_bl7lf")
+texture_focused = ExtResource("5_bl7lf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/LifeInsuranceButton" unique_id=1847523726]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/LifeInsuranceButton/MarginContainer" unique_id=820956604]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Инвестиционное Страхование Жизни"
+label_settings = SubResource("LabelSettings_jrkdu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer" unique_id=632036488]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CreditCardButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1377754799]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 1
+texture_normal = ExtResource("6_jhlon")
+texture_pressed = ExtResource("7_a33xk")
+texture_focused = ExtResource("7_a33xk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/CreditCardButton" unique_id=1325253564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/CreditCardButton/MarginContainer" unique_id=734614120]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Кредитная карта c льготным периодом до 120 дней"
+label_settings = SubResource("LabelSettings_jrkdu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ITMortgageButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1913355495]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 1
+texture_normal = ExtResource("7_0rcli")
+texture_pressed = ExtResource("9_74yie")
+texture_focused = ExtResource("9_74yie")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/ITMortgageButton" unique_id=1515699766]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/ITMortgageButton/MarginContainer" unique_id=1834941489]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Ипотека для IT-Специалистов"
+label_settings = SubResource("LabelSettings_jrkdu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=2086207241]
+layout_mode = 2
+alignment = 1
+
+[node name="LearnButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=815866874]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("2_r2usi")
+texture_pressed = ExtResource("3_yog4t")
+texture_disabled = ExtResource("4_q5hcd")
+
+[node name="LearnText" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton" unique_id=380925086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ИЗУЧИТЬ"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1503381501]
+layout_mode = 2
+texture_normal = ExtResource("13_7klsf")
+texture_pressed = ExtResource("14_gouqy")
+texture_disabled = ExtResource("15_efh1l")
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CloseButton" unique_id=754278714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "ЗАКРЫТЬ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="." unique_id=366209035]
+stream = ExtResource("16_gouqy")
+bus = &"SFX"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/BankDepositButton" to="." method="_on_bank_deposit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/LifeInsuranceButton" to="." method="_on_life_insurance_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/CreditCardButton" to="." method="_on_credit_card_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer2/ITMortgageButton" to="." method="_on_it_mortgage_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/LearnButton" to="." method="_on_learn_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
