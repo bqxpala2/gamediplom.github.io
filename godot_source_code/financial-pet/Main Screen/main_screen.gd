@@ -40,7 +40,14 @@ func _physics_process(delta: float) -> void:
 		time = 0.0
 
 func _on_tap_button_pressed() -> void:
-	Globals.money += 1
+	# Рассчитываем множитель клика на основе настроения и сытости
+	var fullness_factor: float = fullness_progress_bar.value / 100.0
+	var mood_factor: float = mood_progress_bar.value / 100.0
+	
+	# Формула выдает от 1 до 3 монет за один клик в зависимости от шкал
+	var coins_per_tap: int = int(1.0 + ((fullness_factor + mood_factor) / 2.0) * 2.0)
+	
+	Globals.money += coins_per_tap
 	money_label.text = "Финансы " + str(Globals.money)
 	buttons_sound.play()
 	
@@ -104,7 +111,6 @@ func _on_play_button_pressed() -> void:
 	var fullness_factor: float = fullness_progress_bar.value / 100.0
 	var mood_factor: float = mood_progress_bar.value / 100.0
 	
-	# Теперь эта строчка отработает идеально, так как переменная создана в Globals.gd
 	Globals.game_reward_multiplier = int(1.0 + ((fullness_factor + mood_factor) / 2.0) * 1.5)
 
 	var black_box: ColorRect = ColorRect.new()
@@ -124,8 +130,12 @@ func _on_play_button_pressed() -> void:
 func _on_shop_button_pressed() -> void:
 	add_close_menu("res://Button Menu/Shop Menu/shop_menu.tscn")
 
-func _on_change_financial_literacy_value(added_value: int, add_money: int) -> void:
-	financial_progress_bar.value += added_value
+func _on_change_financial_literacy_value(_added_value: int, add_money: int) -> void:
+	# Прибавляем ровно 25% к визуальной шкале при каждом обучении
+	financial_progress_bar.value += 25
+	# Сохраняем актуальное значение в глобальные переменные
+	Globals.financial_literacy = int(financial_progress_bar.value)
+	
 	Globals.money += add_money
 	money_label.text = "Финансы " + str(Globals.money)
 
